@@ -4,11 +4,9 @@
   "homepage": "https://www.shanejeremich.com",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.7.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "web-vitals": "^1.1.0"
   },
@@ -16,13 +14,24 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
+    "lint": "eslint 'src/**/*.{js,jsx}' --fix",
+    "format": "prettier --write 'src/**/*.{js,jsx,css,scss}'"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
+    "extends": "react-app"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint --fix",
+      "prettier-eslint --write"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "browserslist": {
     "production": [
@@ -37,6 +46,19 @@
     ]
   },
   "devDependencies": {
-    "husky": "^5.0.9"
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/preset-env": "^7.12.16",
+    "@babel/preset-react": "^7.12.13",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/react-hooks": "^5.0.3",
+    "@testing-library/user-event": "^12.7.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^5.0.9",
+    "lint-staged": "^10.5.4",
+    "prettier-eslint-cli": "^5.0.0",
+    "snazzy": "^9.0.0"
   }
 }
